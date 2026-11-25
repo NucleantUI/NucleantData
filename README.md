@@ -119,9 +119,10 @@ A new predicate from the parent takes effect on the view's next build.
 
 ## Example
 
-`Groceries` is a shopping list kept in a database, every list in it a
-`@Query`:
+[`Examples/Groceries`](Examples/Groceries) is a shopping list kept in a
+database, every list in it a `@Query`:
 
 ```sh
-swift run Groceries
+cd Examples/Groceries
+swift run
 ```
