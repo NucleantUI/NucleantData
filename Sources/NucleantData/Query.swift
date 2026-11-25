@@ -26,10 +26,10 @@ import NucleantUI
 /// @View
 /// struct OpenItems {
 ///     @Query(#Predicate<Item> { !$0.isDone }, sortBy: [SortRule(\Item.title)])
-///     private var items
+///     private var items: [Item]
 ///
 ///     var body: some View {
-///         ForEach(items) { item in Text(item.title) }
+///         ForEach(items, id: \.id) { item in Text(item.title) }
 ///     }
 /// }
 /// ```
@@ -38,10 +38,6 @@ import NucleantUI
 /// (`.modelContainer(_:)` on a ``VeinContainer``) the first time the view
 /// is built, and follows the context's inserts, changes and deletes from
 /// then on. Every `@Query` with the same predicate shares one result.
-///
-/// Leave the property's type to be inferred, as `@Namespace`'s is: `@View`
-/// makes a property with a written type and no `=` a parameter of the init
-/// it generates.
 @MainActor
 @propertyWrapper
 public struct Query<M: PersistentModel>: DynamicProperty {
