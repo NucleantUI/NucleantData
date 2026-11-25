@@ -14,7 +14,7 @@ needs to show them:
 ## Install
 
 ```swift
-.package(url: "https://github.com/NucleantUI/NucleantData", branch: "main")
+.package(url: "https://github.com/NucleantUI/NucleantData", .upToNextMinor(from: "0.0.0"))
 ```
 
 ```swift
@@ -81,7 +81,7 @@ Query it in a view, and write through the context:
 @View
 struct OpenNotes {
     @Query(#Predicate<Note> { !$0.isDone }, sortBy: [SortRule(\Note.title)])
-    private var notes
+    private var notes: [Note]
     @Environment(\.modelContext) private var context
 
     var body: some View {
@@ -97,9 +97,8 @@ struct OpenNotes {
 }
 ```
 
-Leave a `@Query` property's type to be inferred, as above. To make the
-query from the view's inputs — a search string, a filter — write the view's
-init and assign `_notes = Query(…)` there:
+To make the query from the view's inputs — a search string, a filter —
+write the view's init and assign `_notes = Query(…)` there:
 
 ```swift
 @View
