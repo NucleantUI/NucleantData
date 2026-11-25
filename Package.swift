@@ -33,15 +33,6 @@ let package = Package(
                 .product(name: "Logging", package: "swift-log"),
             ]
         ),
-        // The showcase app: a shopping list kept in a database, every list
-        // in it a `@Query`. `swift run Groceries`.
-        .executableTarget(
-            name: "Groceries",
-            dependencies: [
-                "NucleantData",
-                .product(name: "NucleantUI", package: "NucleantUI"),
-            ]
-        ),
         .testTarget(
             name: "NucleantDataTests",
             dependencies: [
